@@ -28,12 +28,13 @@ int main(){
     char nombreArchivo[50];
     int retornoF;
     LinkedList* listaFiltradaMinotauro;
+    LinkedList* listaFiltradaConDescuentos;
     LinkedList* listaLibros = ll_newLinkedList();
     LinkedList* listaEditoriales = ll_newLinkedList();
 
     do{
     	mostrarMenu();
-    	PedirNumeroEntero(&opcionIngresada,"\n--->Ingrese la opción que desea ejecutar: ","---> ERROR. Ingrese una opción válida.", 1, 6, 2);
+    	PedirNumeroEntero(&opcionIngresada,"\n--->Ingrese la opción que desea ejecutar: ","---> ERROR. Ingrese una opción válida.", 1, 7, 2);
         switch(opcionIngresada){
             case 1:
             	GetString(nombreArchivo, "Por favor ingrese el nombre del archivo de libros que desea cargar: ", 50);
@@ -96,8 +97,25 @@ int main(){
 					}
             	}
             	break;
+            case 6:
+				if(flagCargaListadoLibros==-1||flagCargaListadoEditoriales==-1){
+					printf("\n-->No puede acceder a esta opción sin haber cargado los archivos correspondientes primero\n\n");
+				}else{
+					listaFiltradaConDescuentos = ll_map(listaLibros, libro_AgregarDescuentos);
+					if(listaFiltradaConDescuentos!=NULL){
+						retornoF=controller_saveAsTextLibro("mapeado.csv", listaFiltradaConDescuentos);
+						if(retornoF==0){
+						printf("\n------------->Se filtró la lista y se guardó en un nuevo archivo\n\n");
+						}else{
+							printf("\n------------->No se logró guardar la nueva lista filtrada\n\n");
+						}
+					}else{
+						printf("\n------------->No se logró filtrar la lista\n\n");
+					}
+				}
+				break;
         }
-    }while(opcionIngresada != 6);
+    }while(opcionIngresada != 7);
     printf("-->Ha salido del programa.");
     return 0;
 }

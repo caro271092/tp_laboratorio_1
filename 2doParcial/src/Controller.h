@@ -16,28 +16,33 @@
 /// \param listaLibros array de libros (puntero al inicio)
 /// \return -1 si no logró la acción, 0 si ok
 int controller_loadFromTextLibro(char* path , LinkedList* listaLibros);
-
+/// \fn int controller_loadFromTextEditorial(char*, LinkedList*)
+/// \brief
+/// \param path
+/// \param listaEditoriales
+/// \return
 int controller_loadFromTextEditorial(char* path , LinkedList* listaEditoriales);
 /// \fn int controller_ListLibros(LinkedList*)
-/// \brief genera listado de libros
+/// \brief muestra por pantalla los datos de la lista
 /// \param listaLibros listado generado
 /// \return -1 si no logró listar, 0 ok
 int controller_ListLibros(LinkedList* listaLibros, LinkedList* listaEditoriales);
-
+/// \fn int controller_ListEditoriales(LinkedList*)
+/// \brief muestra por pantalla los datos de la lista
+/// \param listaEditoriales
+/// \return -1 si no logró listar, 0 ok
 int controller_ListEditoriales(LinkedList* listaEditoriales);
-
+/// \fn int controller_saveAsTextLibro(char*, LinkedList*)
+/// \brief guarda datos en archivo de tipo csv
+/// \param path nombre del directorio o archivo donde debe guardar
+/// \param listaLibros lista con datos a guardar
+/// \return 0 si ok o -1 si no se logró ejecutar correctamente
 int controller_saveAsTextLibro(char* path , LinkedList* listaLibros);
-
+/// \fn int controller_saveAsTextEditorial(char*, LinkedList*)
+/// \brief guarda datos en archivo de tipo csv
+/// \param path nombre del directorio o archivo donde debe guardar
+/// \param listaEditoriales lista con datos a guardar
+/// \return 0 si ok o -1 si no se logró ejecutar correctamente
 int controller_saveAsTextEditorial(char* path , LinkedList* listaEditoriales);
-/// \fn int controller_sortEmployee(LinkedList*)
-/// \brief ordenar empleados
-/// \param pArrayListEmployee listado de empleados
-/// \return 0 si se ordenó segun algun criterio, -1 si no se pudo ordenar
-//int controller_sortEmployee(LinkedList* pArrayListEmployee);
-/// \fn int controller_saveAsText(char*, LinkedList*)
-/// \brief Guarda los datos de los empleados en el archivo data.csv (modo texto)
-/// \param path archivo
-/// \param pArrayListEmployee listado de empleados
-/// \return -1 si algo salió mal, 0 si ok
-//int controller_saveAsText(char* path , LinkedList* pArrayListEmployee);
+
 #endif

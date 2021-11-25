@@ -68,7 +68,8 @@ void mostrarMenu(){
 	 "3. Ordenar lista de libros según el criterio de ordenamiento “Autor” de manera ascendente.\n"
 	 "4. Imprimir por pantalla datos de los libros, con nombre de editorial.\n"
 	 "5. Realizar listado de libros de la editorial MINOTAURO. Guardar el listado en un archivo csv.\n"
-	 "6. Salir\n"
+	 "6. Generar el archivo de salida “mapeado.csv” luego de aplicar la función map.\n"
+	 "7. Salir\n"
 	"*****************************************************\n");
 }
 

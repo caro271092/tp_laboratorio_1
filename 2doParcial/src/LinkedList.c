@@ -336,6 +336,33 @@ LinkedList* ll_filter(LinkedList* this, int (*pFn)(void* element)){
 	return listaFiltrada;
 }
 
+/*ll_map ejecutará la función recibida como parámetro por cada ítem de la lista, de
+este modo se realizarán descuentos a los precios según se detalla:
+* PLANETA: 20% (si el monto es mayor o igual a $300)--------2001
+* SIGLO XXI EDITORES: 10% (si el monto es menor o igual a $200) --------2002
+Agregar la siguiente opcion al menú de usuarios:
+6. Generar el archivo de salida “mapeado.csv” luego de aplicar la función map.*/
+
+LinkedList* ll_map(LinkedList* this, int (*pFn)(void* element)){
+	LinkedList* listaFiltradaPrecio = NULL;
+	int i;
+	int len;
+	len = ll_len(this);
+	void* elemento;
+	if(this!=NULL && pFn!=NULL && len>0){
+		listaFiltradaPrecio = ll_newLinkedList();
+	   if(listaFiltradaPrecio!=NULL){
+			for(i=0;i<len;i++){
+				elemento=ll_get(this,i);
+				if(pFn(elemento)==1){
+					ll_add(listaFiltradaPrecio,elemento);
+				}
+			}
+		}
+	}
+	return listaFiltradaPrecio;
+}
+
 int ll_count(LinkedList* this, int (*pFn)(void* element)){
 	int acumulador=0;
 	int i;

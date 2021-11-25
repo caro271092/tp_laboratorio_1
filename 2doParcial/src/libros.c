@@ -148,3 +148,25 @@ int libro_EditorialMinotauro(void* elemento){//q devuelva 1 si es
 	}
 	return retorno;
 }
+
+int libro_AgregarDescuentos(void* elemento){
+	int retorno = -1;
+	int idEditorialObtenido;
+	float precioObtenido;
+	float precioFinal;
+	libro_getIdEditorial(elemento, &idEditorialObtenido);
+		if(elemento != NULL){
+			libro_getPrecio(elemento, &precioObtenido);
+				if((idEditorialObtenido==2001) && (precioObtenido>=300)){
+					precioFinal=precioObtenido-(precioObtenido*.2);
+					libro_setPrecio(elemento, precioFinal);
+					}else{
+						if((idEditorialObtenido==2002)&&(precioObtenido<=200)){
+							precioFinal=precioObtenido-(precioObtenido*.1);
+							libro_setPrecio(elemento, precioFinal);
+						}
+					}
+		retorno =1;
+		}
+	return retorno;
+}
