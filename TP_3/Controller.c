@@ -29,6 +29,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee){
 		parser = parser_EmployeeFromBinary(pFile,pArrayListEmployee);
 		if(parser==0){
 			retorno=0;
+			fflush(pFile);
 			fclose(pFile);
 		}
 	}else{

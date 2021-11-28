@@ -24,17 +24,15 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee){
 
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee){
 	int retorno=-1;
-	int retornoFRead;
 	Employee* auxEmployee;
 	if(pFile!=NULL && pArrayListEmployee!=NULL){
-		while(!feof(pFile)){
+		do{
 			auxEmployee = employee_new();
-			retornoFRead = fread(auxEmployee,sizeof(Employee),1,pFile);//se guardan datos de 1 empleado
-			if(retornoFRead==1 && auxEmployee!=NULL){//retorna ctidad de datos leidos, si es menor a lo pedido=>error
-					ll_add(pArrayListEmployee,auxEmployee);
+				if(fread(auxEmployee,sizeof(Employee),1,pFile)== 1){//se guardan datos de 1 empleado
+					ll_add(pArrayListEmployee, auxEmployee);
 					retorno = 0;
 				}
-			}
-		}
+		}while(!feof(pFile));
+	}
 	return retorno;
 }

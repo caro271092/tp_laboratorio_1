@@ -29,7 +29,7 @@ int main(){
                 }
                 break;
             case 2:
-            	if(controller_loadFromBinary("data.csv",listaEmpleados)==0){
+            	if(controller_loadFromBinary("dataBin.bin",listaEmpleados)==0){
 					flagCargaListadoBinario=0;
 					printf("\n------------->Los datos se cargaron exitosamente\n\n");
             	}else{
@@ -76,8 +76,8 @@ int main(){
             	//ordenar
                	break;
             case 8:
-            	if(flagCargaListadoTexto==-1){
-					printf("\n-->No puede acceder a esta opción sin haber cargado los datos de los empleados\n\n");
+            	if(flagCargaListadoBinario==-1&&flagCargaListadoTexto==-1){
+					printf("\n-->No puede acceder a esta opción sin haber cargado los datos de los empleados, opción 1 \n\n");
 				}else{
 					if(controller_saveAsText("data.csv",listaEmpleados)==0){
 					printf("\n-->Archivo de texto guardado exitosamente\n\n");
@@ -86,17 +86,17 @@ int main(){
             	//guardar texto
                	break;
             case 9:
-            	if(flagCargaListadoBinario==-1){
-					printf("\n-->No puede acceder a esta opción sin haber cargado los datos de los empleados en modo binario\n");
+            	if(flagCargaListadoBinario==-1&&flagCargaListadoTexto==-1){
+            		printf("\n-->No puede acceder a esta opción sin haber cargado los datos de los empleados \n\n");
 				}else{
-					if(controller_saveAsBinary("data.csv",listaEmpleados)==0){
+					if(controller_saveAsBinary("dataBin.bin",listaEmpleados)==0){
 					printf("\n-->Archivo binario guardado exitosamente\n\n");
 					}
 				}
             	//guardar binario
                	break;
             case 10:
-            	if(flagCargaListadoBinario==0||flagCargaListadoTexto==0){
+            	if((flagCargaListadoBinario==0&&flagCargaListadoTexto==0)){
             		printf("\n-->No puede salir del programa sin guardar.\n\n");
             	}else{
             		opcionIngresada =11;
